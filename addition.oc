@@ -1,8 +1,9 @@
+#include <obliv.h>
 #include "addition.oh"
 #include "addition.h"
 
 void oblivAdd(void* args) {
-	addition *add = (addition*)args;
+	add *add = (add*)args;
 
 	obliv int oa = feedOblivInt(add->a, 1);
 	obliv int ob = feedOblivInt(add->b, 2); 
