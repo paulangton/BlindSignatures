@@ -1,5 +1,5 @@
-#include <addition.oh>
-#include <addition.h>
+#include "addition.oh"
+#include "addition.h"
 
 void oblivAdd(void* args) {
 	addition *add = (addition*)args;

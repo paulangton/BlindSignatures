@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <obliv.h>
-#include <addition.h>
-#include <addition.oc>
+#include "addition.h"
 
 int main (int argc, char *argv[]) {
 	printf("Addition\n");
