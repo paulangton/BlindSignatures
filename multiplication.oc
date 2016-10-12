@@ -1,0 +1,7 @@
+#include <stdint.h>
+#include <obig.oh>
+
+void obig_mul(obig *out, obig x, obig y) obliv 
+{
+	
+}
