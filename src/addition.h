@@ -5,4 +5,4 @@ typedef struct {
 	int a;
 	int b;
 	int c;
-} add;
+} ProtocolIO;

@@ -10,7 +10,7 @@ int main (int argc, char *argv[]) {
 		const char *remote_host = strtok(argv[1], ":");
 		const char *port = strtok(NULL, ":");
 		ProtocolDesc pd;
-		add *add1;
+		ProtocolIO *add1;
 		add1->a = 0;
 		add1->b = 0;
 		add1->c = 0;

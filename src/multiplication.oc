@@ -1,7 +1,16 @@
 #include <stdint.h>
-#include <obig.oh>
+#include "obig.oh"
 
-void obig_mul(obig *out, obig x, obig y) obliv 
+void oblivMul(obig *out, obig x, obig y) obliv 
 {
+
+	ProtocolIO *mul = (mul*)args;
+
+	obliv int oa = feedOblivInt(mul->num1, 1);
+	obliv int ob = feedOblivInt(mul->num2, 2); 
+	obliv int oc = 0;
+	obig_mul(&oc, oa, ob);
+
+ 	revealOblivInt(&mul->result, oc, 0);
 	
 }
