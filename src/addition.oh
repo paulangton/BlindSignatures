@@ -1,0 +1,3 @@
+void oblivAdd(void* args);
+obliv int feedOblivInt(int num, int party);
+void revealOblivInt(int* dest, obliv int src, int p);

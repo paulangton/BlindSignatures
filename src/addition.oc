@@ -1,0 +1,15 @@
+#include "addition.oh"
+#include "addition.h"
+
+void oblivAdd(void* args) {
+	add *add = (add*)args;
+
+	obliv int oa = feedOblivInt(add->a, 1);
+	obliv int ob = feedOblivInt(add->b, 2); 
+	obliv int oc = oa + ob;
+
+ 	revealOblivInt(&add->c, oc, 0);
+
+}
+
+
