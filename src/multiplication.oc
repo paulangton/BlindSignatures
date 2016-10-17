@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "multiplication.oh"
+#include "multiplication.h"
 #include "/home/paul/absentminded-crypto-kit/src/obig.oh"
 
 void oblivMul(void *args) obliv 
@@ -7,11 +8,18 @@ void oblivMul(void *args) obliv
 
 	ProtocolIO *mul = (ProtocolIO*)args;
 
-	obliv int oa = feedOblivInt(mul->num1, 1);
-	obliv int ob = feedOblivInt(mul->num2, 2); 
-	obliv int oc = 0;
+	obig oa;
+	obig ob;
+	obig oc;
+
+	obig_import_onative(&oa, feedOblivInt(mul->num1, 1));
+	obig_import_onative(&ob, feedOblivInt(mul->num2, 2));
+
+
 	obig_mul(&oc, oa, ob);
 
- 	revealOblivInt(&mul->result, oc, 0);
+	obliv int answer = obig_export_onative(oc);
+
+ 	revealOblivInt(&mul->result, answer, 0);
 	
 }	

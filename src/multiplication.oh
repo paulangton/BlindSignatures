@@ -1,3 +1,6 @@
-void oblivMul(void* args);
-obliv int feedOblivInt(int num, int party);
-void revealOblivInt(int* dest, obliv int src, int p);
+void oblivMul(void* args) obliv;
+obliv int feedOblivInt(int num, int party) obliv;
+_Bool revealOblivInt(int* dest, obliv int src, int party) obliv;
+void obig_import_onative(obig* x, obliv uint64_t y) obliv;
+obliv uint64_t obig_export_onative(obig x) obliv;
+void obig_mul(obig* out, obig x, obig y) obliv;
