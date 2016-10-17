@@ -12,8 +12,11 @@ void oblivMul(void *args) obliv
 	obig ob;
 	obig oc;
 
-	obig_import_onative(&oa, feedOblivInt(mul->num1, 1));
-	obig_import_onative(&ob, feedOblivInt(mul->num2, 2));
+	obliv int n1 = feedOblivInt(mul->num1, 1);
+	obliv int n2 = feedOblivInt(mul->num2, 2);
+
+	obig_import_onative(&oa, n1);
+	obig_import_onative(&ob, n2);
 
 
 	obig_mul(&oc, oa, ob);
