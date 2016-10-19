@@ -1,1 +1,1 @@
-void oblivMul(void* args) obliv;
+void oblivMul(void* args);

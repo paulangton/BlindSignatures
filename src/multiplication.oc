@@ -3,7 +3,7 @@
 #include "multiplication.h"
 #include "/home/paul/absentminded-crypto-kit/src/obig.oh"
 
-void oblivMul(void *args) obliv 
+void oblivMul(void *args) 
 {
 
 	ProtocolIO *mul = (ProtocolIO*)args;
