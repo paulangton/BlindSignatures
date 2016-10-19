@@ -5,12 +5,13 @@
 
 int main (int argc, char *argv[]) {
 	printf("Big-Int Oblivious Multiplication\n");
-	int currentParty;
+
 	if (argc == 4) {
 		const char *remote_host = strtok(argv[1], ":");
 		const char *port = strtok(NULL, ":");
 		ProtocolDesc pd;
-		ProtocolIO *mul;
+		ProtocolIO *mul = malloc(sizeof(ProtocolIO));
+		int currentParty;
 
 		printf("Connecting to %s on port %s .. \n", remote_host, port);
 
@@ -28,18 +29,20 @@ int main (int argc, char *argv[]) {
 		}
 		currentParty = (argv[2][0] =='1'?1:2);
 		setCurrentParty(&pd, currentParty);
-		mul->data = argv[3];
+		mul->data = (int)argv[3];
 
 		execYaoProtocol(&pd, oblivMul, &mul);
 		cleanupProtocol(&pd);
 
 		printf("Oblivious Multiplication produced: %d", mul->result);
+		free(mul);
 	}
 	else {
 		printf("Usage: %s <hostname:port> <1|2> <filename>\n" 
 	    "\tHostname usage:\n" 
 		"\tlocal -> 'localhost' remote -> IP address or DNS name\n", argv[0]);
 	}
+
 	return 0;
 
 }
