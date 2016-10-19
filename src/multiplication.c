@@ -6,7 +6,7 @@
 int main (int argc, char *argv[]) {
 	printf("Big-Int Oblivious Multiplication\n");
 	int currentParty;
-	if (argc == 5) {
+	if (argc == 4) {
 		const char *remote_host = strtok(argv[1], ":");
 		const char *port = strtok(NULL, ":");
 		ProtocolDesc pd;
@@ -28,8 +28,7 @@ int main (int argc, char *argv[]) {
 		}
 		currentParty = (argv[2][0] =='1'?1:2);
 		setCurrentParty(&pd, currentParty);
-		mul->num1 = argv[3];
-		mul->num2 = argv[4];
+		mul->data = argv[3];
 
 		execYaoProtocol(&pd, oblivMul, &mul);
 		cleanupProtocol(&pd);
