@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <obliv.h>
+#include <string.h>
 #include "multiplication.h"
 
 int main (int argc, char *argv[]) {
@@ -29,16 +30,16 @@ int main (int argc, char *argv[]) {
 		}
 		currentParty = (argv[2][0] =='1'?1:2);
 		setCurrentParty(&pd, currentParty);
-		mul->data = (int)argv[3];
+		mul->data = atoi(argv[3]);
 
 		execYaoProtocol(&pd, oblivMul, &mul);
 		cleanupProtocol(&pd);
 
-		printf("Oblivious Multiplication produced: %d", mul->result);
+		printf("Oblivious Multiplication produced: %d\n", mul->result);
 		free(mul);
 	}
 	else {
-		printf("Usage: %s <hostname:port> <1|2> <filename>\n" 
+		printf("Usage: %s <hostname:port> <1|2> <data>  \n" 
 	    "\tHostname usage:\n" 
 		"\tlocal -> 'localhost' remote -> IP address or DNS name\n", argv[0]);
 	}
