@@ -9,15 +9,18 @@ void oblivMul(void *args)
 	ProtocolIO *mul = (ProtocolIO*)args;
 
 	obig oa;
+	obig_init(&oa, 256);
 	obig ob;
+	obig_init(&ob, 256);
 	obig oc;
+	obig_init(&oc, 256);
 
 	obliv int n1 = feedOblivInt(mul->data, 1);
 	obliv int n2 = feedOblivInt(mul->data, 2);
 	obliv int n3 = 0;
 
 	obig_import_onative(&oa, n1);
-	obig_import_onative(&ob, n2);	
+	obig_import_onative(&ob, n2);
 	obig_import_onative(&oc, n3);
 
 	obig_mul(&oc, oa, ob);
