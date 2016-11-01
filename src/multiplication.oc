@@ -1,32 +1,47 @@
+#include <stdio.h>
 #include <stdint.h>
 #include "multiplication.oh"
 #include "multiplication.h"
-#include "/home/paul/absentminded-crypto-kit/src/obig.oh"
+#include "/mnt/c/Users/Paul/BlindSignatures/lib/absentminded-crypto-kit/src/obig.oh"
 
 void oblivMul(void *args)
 {
 
 	ProtocolIO *mul = (ProtocolIO*)args;
 
+	printf("beginning obig initiation...\n");
+
 	obig oa;
-	obig_init(&oa, 256);
+	obig_init(&oa, 16);
 	obig ob;
-	obig_init(&ob, 256);
+	obig_init(&ob, 16);
 	obig oc;
-	obig_init(&oc, 256);
+	obig_init(&oc, 64);
+
+	printf("obig initiation successful.\n");
 
 	obliv int n1 = feedOblivInt(mul->data, 1);
 	obliv int n2 = feedOblivInt(mul->data, 2);
 	obliv int n3 = 0;
 
+	printf("obliv feed successful\n");
+
 	obig_import_onative(&oa, n1);
 	obig_import_onative(&ob, n2);
 	obig_import_onative(&oc, n3);
 
+	printf("obig import successful\n");
+
 	obig_mul(&oc, oa, ob);
+
+	printf("obig multiplication successful\n");
 
 	obliv int answer = obig_export_onative(oc);
 
+	printf("obig export successful\n");
+
  	revealOblivInt(&mul->result, answer, 0);
-	
-}	
+
+	printf("Reveal successful %d\n", mul->result);
+
+}
