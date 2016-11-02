@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include "multiplication.oh"
 #include "multiplication.h"
-#include "/mnt/c/Users/Paul/BlindSignatures/lib/absentminded-crypto-kit/src/obig.oh"
+#include "../lib/absentminded-crypto-kit/src/obig.oh"
 
 void oblivMul(void *args)
 {
