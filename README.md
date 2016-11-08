@@ -7,3 +7,5 @@ https://bitbucket.org/jackdoerner/absentminded-crypto-kit
 
 To run:
 ./a.out IPAddress PartyNumber(1|2) BigInt
+
+This simple program is practice for what is to come!
