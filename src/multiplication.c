@@ -35,7 +35,7 @@ int main (int argc, char *argv[]) {
 		mul->data = atoi(argv[3]);
 
 		printf("Executing Yao's Protocol...\n");
-		execYaoProtocol(&pd, oblivMul, &mul);
+		execYaoProtocol(&pd, oblivMul, mul);
 		cleanupProtocol(&pd);
 
 		printf("Oblivious Multiplication produced: %d\n", mul->result);
