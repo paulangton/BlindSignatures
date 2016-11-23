@@ -1,6 +1,6 @@
 # BlindSignatures
 
-Computes the oblivious multiplication of two Big Integers using the secure multi-party computation C extension Obliv-C. 
+Computes the oblivious multiplication of two Big Integers using Obliv-C, the secure multi-party computation C extension available at https://oblivc.org/. 
 
 Requires building the absentminded-crypto-kit(ACK) which can be found at:
 https://bitbucket.org/jackdoerner/absentminded-crypto-kit
