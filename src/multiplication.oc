@@ -12,9 +12,9 @@ void oblivMul(void *args)
 	printf("beginning obig initiation...\n");
 
 	obig oa;
-	obig_init(&oa, 16);
+	obig_init(&oa, 32);
 	obig ob;
-	obig_init(&ob, 16);
+	obig_init(&ob, 32);
 	obig oc;
 	obig_init(&oc, 64);
 
