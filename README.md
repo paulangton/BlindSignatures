@@ -1,13 +1,17 @@
 # BlindSignatures
 
-Computes the oblivious multiplication of two Big Integers using Obliv-C, the secure multi-party computation C extension available at https://oblivc.org/. 
+Computes the oblivious multiplication of two Big Integers using Obliv-C, the secure multi-party computation C extension available at https://oblivc.org/.
 
-Requires building the absentminded-crypto-kit(ACK) which can be found at:
+To pull in the absentminded-crypto-kit(ACK) submodule:
+git submodule init
+git submodule update
+
+Requires building the ACK, instructions for which can be found at:
 https://bitbucket.org/jackdoerner/absentminded-crypto-kit
 
-To compile (after buliding ACK):
+To compile (after building ACK):
 Change working directory to BlindSignatures
-Type make
+Run make
 
 To run:
 ./a.out IPAddress PartyNumber(1|2) BigInt
