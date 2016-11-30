@@ -20,9 +20,9 @@ void oblivMul(void *args)
 
 	printf("obig initiation successful.\n");
 
-	obliv int n1 = feedOblivInt(mul->data, 1);
-	obliv int n2 = feedOblivInt(mul->data, 2);
-	obliv int n3 = 0;
+	obliv long long n1 = feedOblivInt(mul->data, 1);
+	obliv long long n2 = feedOblivInt(mul->data, 2);
+	obliv long long n3 = 0;
 
 	printf("obliv feed successful\n");
 
@@ -36,7 +36,7 @@ void oblivMul(void *args)
 
 	printf("obig multiplication successful\n");
 
-	obliv int answer = obig_export_onative(oc);
+	obliv long long answer = obig_export_onative(oc);
 
 	printf("obig export successful\n");
 
