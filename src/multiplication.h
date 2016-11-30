@@ -1,6 +1,6 @@
 void oblivMul(void* args);
 
 typedef struct {
-	int data;
-	int result;
+	long long data;
+	long long result;
 } ProtocolIO;
