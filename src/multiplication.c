@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <obliv.h>
 #include <string.h>
+#include <gmp.h>
 #include "multiplication.h"
 
 int main (int argc, char *argv[]) {
@@ -32,13 +33,19 @@ int main (int argc, char *argv[]) {
 		printf("Establishing parties...\n");
 		currentParty = (argv[2][0] =='1'?1:2);
 		setCurrentParty(&pd, currentParty);
-		mul->data = atoi(argv[3]);
+
+		// Jack's function takes a pointer to the beginning of an array of 8 bit integers
+		// We should first read our input into a gmplib mpz_t to preserve size, then
+		// extract 8 bit pieces of the mpz_t into the vector
+		uint8_t LEVector[32];
+		toPointedLE(argv[3], &LEVector);
+		mul->data = &LEVector;
 
 		printf("Executing Yao's Protocol...\n");
 		execYaoProtocol(&pd, oblivMul, mul);
 		cleanupProtocol(&pd);
 
-		printf("Oblivious Multiplication produced: %d\n", mul->result);
+		printf("Oblivious Multiplication produced: %llu\n", mul->result);
 		free(mul);
 	}
 	else {
@@ -49,4 +56,18 @@ int main (int argc, char *argv[]) {
 
 	return 0;
 
+}
+
+// should convert a
+void toPointedLE(char[] x, void* p) obliv {
+	mpz_t input;
+	mpz_init(input);
+	mpz_set_str(&input, &x, 10);
+	temp = mpz_sizeinbase(input, 2);
+	mpz_t quotient;
+	mpz_init(quotient);
+	mpz_set(quotient, input);
+	for(size_t i = 0; i < temp; i += 8) {
+		mpz_fdiv_qr_2exp(quotient, ((uint8_t) p)[i], quotient, );
+	}
 }

@@ -8,15 +8,22 @@ void oblivMul(void *args)
 {
 
 	ProtocolIO *mul = (ProtocolIO*)args;
+	LEBVector in1;
+	LEBVector in2;
+	LEBVector out;
 
 	printf("beginning obig initiation...\n");
 
+	// All size values are in BYTES not bits
 	obig oa;
 	obig_init(&oa, 32);
+	obig_import_pointed(&oa, &in1, 32);
 	obig ob;
 	obig_init(&ob, 32);
+	obig_import_pointed(&ob, &in2, 32);
 	obig oc;
 	obig_init(&oc, 64);
+	obig_import_pointed(&oc, &out, 64);
 
 	printf("obig initiation successful.\n");
 
@@ -40,8 +47,8 @@ void oblivMul(void *args)
 
 	printf("obig export successful\n");
 
- 	revealOblivInt(&mul->result, answer, 0);
+ 	revealOblivLLong(&mul->result, answer, 0);
 
-	printf("Reveal successful %d\n", mul->result);
+	printf("Reveal successful %llu\n", mul->result);
 
 }
