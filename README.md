@@ -2,6 +2,9 @@
 
 Computes the oblivious multiplication of two Big Integers using Obliv-C, the secure multi-party computation C extension available at https://oblivc.org/.
 
+Requires gmplib for big integer computation, found at:  
+https://gmplib.org/  
+
 To pull in the absentminded-crypto-kit(ACK) submodule:  
 git submodule init  
 git submodule update  
