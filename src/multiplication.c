@@ -45,7 +45,10 @@ int main (int argc, char *argv[]) {
 		execYaoProtocol(&pd, oblivMul, mul);
 		cleanupProtocol(&pd);
 
-		printf("Oblivious Multiplication produced: %llu\n", mul->result);
+		printf("Oblivious Multiplication produced: ");
+		for(int i = 0; i < 64; i++){
+			printf(mul->result[i]);
+		}
 		free(mul);
 	}
 	else {
@@ -59,7 +62,7 @@ int main (int argc, char *argv[]) {
 }
 
 // should convert a
-void toPointedLE(char[] x, void* p) obliv {
+void toPointedLE(char[] x, uint8_t* p) obliv {
 	mpz_t input;
 	mpz_init(input);
 	mpz_set_str(&input, &x, 10);
@@ -67,7 +70,8 @@ void toPointedLE(char[] x, void* p) obliv {
 	mpz_t quotient;
 	mpz_init(quotient);
 	mpz_set(quotient, input);
-	for(size_t i = 0; i < temp; i += 8) {
-		mpz_fdiv_qr_2exp(quotient, ((uint8_t) p)[i], quotient, );
+	for(size_t i = 0; i < temp; i += sizeof(uint8_t)) {
+		mpz_fdiv_q_2exp(p[i], quotient, sizeof(uint8_t));
+		mpz_fdiv_r_2exp(quotient, quotient, sizeof(uint8_t));
 	}
 }
