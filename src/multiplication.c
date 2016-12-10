@@ -39,6 +39,11 @@ int main (int argc, char *argv[]) {
 		// extract 8 bit pieces of the mpz_t into the vector
 		uint8_t LEVector[32];
 		toPointedLE(argv[3], &LEVector);
+		printf("Little Endian Bit Vector is: ");
+		for(int i = 0; i < 32; i += 1) {
+			printf("%d, ", LEVector[i]);
+		}
+
 		mul->data = &LEVector;
 
 		printf("Executing Yao's Protocol...\n");
@@ -47,7 +52,7 @@ int main (int argc, char *argv[]) {
 
 		printf("Oblivious Multiplication produced: ");
 		for(int i = 0; i < 64; i++){
-			printf(mul->result[i]);
+			printf("" + mul->result[i]);
 		}
 		free(mul);
 	}
@@ -61,12 +66,12 @@ int main (int argc, char *argv[]) {
 
 }
 
-// should convert a
-void toPointedLE(char[] x, uint8_t* p) obliv {
+// should convert a string representing a big integer to a pointed array of 8-bit unsigned integers
+void toPointedLE(char* x, uint8_t* p) {
 	mpz_t input;
 	mpz_init(input);
 	mpz_set_str(&input, &x, 10);
-	temp = mpz_sizeinbase(input, 2);
+	uint8_t temp = mpz_sizeinbase(input, 2);
 	mpz_t quotient;
 	mpz_init(quotient);
 	mpz_set(quotient, input);

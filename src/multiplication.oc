@@ -7,12 +7,15 @@
 void oblivMul(void *args)
 {
 
+	// All size values are in BYTES not bits
+
 	ProtocolIO *mul = (ProtocolIO*)args;
 
 	printf("beginning obig initiation...\n");
 
 	obliv uint8_t v1[32];
 	obliv uint8_t v2[32];
+	obliv uint8_t answer[64]
 
 	for(i = 0; i < 32; i++) {
        v1[i] = feedOblivInt(mul->data[i], 1);
@@ -24,7 +27,6 @@ void oblivMul(void *args)
 
     printf("obliv feed successful\n");
 
-	// All size values are in BYTES not bits
 	obig oa;
 	obig_init(&oa, 32);
 	obig_import_pointed(&oa, &v1, 32);
@@ -41,7 +43,10 @@ void oblivMul(void *args)
 
 	printf("obig multiplication successful\n");
 
-	obliv uint8_t *answer = obig_export_pointed(oc);
+	for(int i = 0; i < 64; ) {
+		answer[i] = (unit8_t)obig_export_onative(oc->data[i])
+	}
+
 
 	printf("obig export successful\n");
 
